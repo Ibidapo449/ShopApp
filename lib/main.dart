@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
        
          primarySwatch: Colors.purple,
+        // ignore: deprecated_member_use
         accentColor: Colors.deepOrange,
+        fontFamily: "Lato",
       ),
       home: ProductsOverviewScreen(),
     );
