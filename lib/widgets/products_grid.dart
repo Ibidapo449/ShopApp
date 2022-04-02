@@ -4,25 +4,20 @@ import 'package:shoeapp/providers/products.dart';
 import 'package:shoeapp/widgets/product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
-  const ProductsGrid({Key? key}) : super(key: key);
-
-  
-
+  final bool showFavs;
+  // ignore: use_key_in_widget_constructors
+  const ProductsGrid(this.showFavs);
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
-    final products = productsData.items;
+    final products = showFavs ? productsData.favoriteItems :productsData.items;
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
-      itemBuilder: (ctx, i) => ChangeNotifierProvider(
-        create: (context) => products[i],
-        child: ProductItem(
-            // products[i].id,
-            // products[i].title,
-            // products[i].imageUrl,
-          ),
-
+      itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+        value: products[i],
+        // create: (context) => products[i],
+        child: const ProductItem(),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

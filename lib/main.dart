@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
           // ignore: deprecated_member_use
           accentColor: Colors.deepOrange,
           fontFamily: "Lato",
+          
         ),
+        debugShowCheckedModeBanner: false,
         home: const ProductsOverviewScreen(),
         routes: {
           ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen()
