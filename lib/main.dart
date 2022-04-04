@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoeapp/providers/cart.dart';
 import 'package:shoeapp/providers/products.dart';
+import 'package:shoeapp/screens/cart_screen.dart';
 import 'package:shoeapp/screens/product_detail_screen.dart';
 import 'package:shoeapp/screens/product_overview_screen.dart';
 
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: const ProductsOverviewScreen(),
         routes: {
-          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen()
+          ProductDetailScreen.routeName: (ctx) => const ProductDetailScreen(),
+          CartScreen.routeName: (ctx) => const CartScreen()
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoeapp/providers/cart.dart';
+import 'package:shoeapp/screens/cart_screen.dart';
 import 'package:shoeapp/widgets/badge.dart';
 import 'package:shoeapp/widgets/products_grid.dart';
 
@@ -25,8 +26,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('MyShop'), 
-      actions: <Widget>[
+      appBar: AppBar(title: const Text('MyShop'), actions: <Widget>[
         PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
               setState(() {
@@ -54,11 +54,13 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             child: ch!,
             value: cart.itemCount.toString(),
             color: Colors.black,
-            ),
-            child: IconButton(
-                onPressed: () {}, 
-                icon: const Icon(Icons.shopping_cart)),
-            )
+          ),
+          child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              icon: const Icon(Icons.shopping_cart)),
+        )
       ]),
       body: ProductsGrid(_showOnlyFavorites),
     );

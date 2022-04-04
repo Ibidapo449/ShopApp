@@ -15,7 +15,7 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  late Map<String, CartItem> _items = {};
+  late final Map<String, CartItem> _items = {};
   Map<String, CartItem> get items {
     return {..._items};
   }
@@ -23,6 +23,15 @@ class Cart with ChangeNotifier {
   int get itemCount {
     // ignore: unnecessary_null_comparison
     return _items.length;
+  }
+
+  double get totalAmount {
+    var total = 0.0;
+    // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
+    _items.forEach((key, CartItem) {
+      total += CartItem.price * CartItem.quantity;
+    });
+    return total;
   }
 
   void addItem(String productId, double price, String title) {
