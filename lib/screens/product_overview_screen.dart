@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoeapp/providers/cart.dart';
 import 'package:shoeapp/screens/cart_screen.dart';
+import 'package:shoeapp/widgets/app_drawer.dart';
 import 'package:shoeapp/widgets/badge.dart';
 import 'package:shoeapp/widgets/products_grid.dart';
 
@@ -62,6 +63,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               icon: const Icon(Icons.shopping_cart)),
         )
       ]),
+      drawer: const AppDrawer(),
       body: ProductsGrid(_showOnlyFavorites),
     );
   }
