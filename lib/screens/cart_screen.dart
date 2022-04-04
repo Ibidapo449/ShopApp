@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoeapp/providers/cart.dart' show Cart;
+import 'package:shoeapp/providers/orders.dart';
 import 'package:shoeapp/widgets/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
@@ -37,7 +38,13 @@ class CartScreen extends StatelessWidget {
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   // ignore: deprecated_member_use
-                  FlatButton(onPressed: () {},
+                  FlatButton(onPressed: () {
+                    Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      );
+                      cart.clear();
+                  },
                    child: const Text("ORDER NOW"),
                    textColor: Theme.of(context).primaryColor,
                    )
