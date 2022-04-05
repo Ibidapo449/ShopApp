@@ -45,10 +45,19 @@ class ProductItem extends StatelessWidget {
               Icons.shopping_cart,
             ),
             onPressed: () {
-              cart.addItem(
-                product.id, 
-                product.price, 
-                product.title);
+              cart.addItem(product.id, product.price, product.title);
+              // ignore: deprecated_member_use
+              Scaffold.of(context).hideCurrentSnackBar();
+              // ignore: deprecated_member_use
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: const Text("Item added to cart!"),
+                duration: const Duration(seconds: 2),
+                action: SnackBarAction(
+                    label: "UNDO",
+                    onPressed: () {
+                      cart.removeSingleItem(product.id);
+                    }),
+              ));
             },
             // ignore: deprecated_member_use
             color: Theme.of(context).accentColor,
